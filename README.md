@@ -36,6 +36,26 @@ real make.fun ghost from the press kit and the big caption were composited
 on top with `compose.py` (Python + Pillow), so the letters stay sharp and
 spelled right even when the picture is shrunk to the size the judge sees.
 
+## Meme kedua: Surat Pengunduran Diri
+
+![Meme kedua](meme-gibran.png)
+
+A formal resignation letter on a Vice President's desk: letterhead
+"WAKIL PRESIDEN REPUBLIK INDONESIA", addressed by GIBRAN RAKABUMING
+RAKA, resigning because he wants to focus on playing GTA 6. The joke
+is the format itself — the most formal document imaginable, used for
+the least formal reason.
+
+The make.fun ghost is the letter's official seal, big at the lower
+right, and a red MUNDUR stamp sits across the bottom. No face is
+shown anywhere: Gibran's identity comes from the letterhead, the
+name, and the signature. The letter was drawn crisp with Pillow in
+`compose-gibran.py` over a photographed desk (controller, pen, lamp),
+so not a single word is garbled.
+
+The post text for this meme is in `caption-gibran.txt`. `POST.json`
+still points at the first meme's post until this one is posted.
+
 ## The post
 
 `caption.txt` holds the exact text to post on X together with `meme.png`:
@@ -70,3 +90,6 @@ to `POST.json`.
 - `main.ts` — the entry program described above
 - `POST.json` — the X post address (placeholder until posted)
 - `caption.txt` — the exact text to post with the meme
+- `meme-gibran.png` — the second meme (resignation letter), 1200x675 PNG
+- `compose-gibran.py` — the Pillow script that built `meme-gibran.png`
+- `caption-gibran.txt` — the exact text to post with the second meme
