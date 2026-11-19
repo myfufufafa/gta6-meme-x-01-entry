@@ -19,6 +19,7 @@ SERIF_ITALIC = "/usr/share/fonts/truetype/noto/NotoSerif-Italic.ttf"
 
 SCENE = Path.home() / "workspace/makefun/gta6-meme-x-01-work/scenes-gibran/media-generation-gibran-desk-v1-0-8c0f2c78-beac-42f2-92bc-2f55202da57e.png"
 MARK = Path.home() / "workspace/makefun/gta6-meme-x-01-press/mark-1024.png"
+PORTRAIT = Path.home() / "workspace/makefun/gta6-meme-x-01-work/scenes-gibran/media-generation-gibran-portrait-0-45a27a4a-9af1-49b0-a8a0-c751c061ef30.png"
 OUT = Path(__file__).resolve().parent / "meme-gibran.png"
 
 INK = (25, 25, 25, 255)
@@ -40,15 +41,15 @@ def draw_letter():
     paper = Image.new("RGBA", (pw, ph), (253, 253, 248, 255))
     d = ImageDraw.Draw(paper)
 
-    # Letterhead
-    centered(d, pw // 2, 16, "WAKIL PRESIDEN", font(BOLD, 30), INK)
-    centered(d, pw // 2, 52, "REPUBLIK INDONESIA", font(BOLD, 30), INK)
+    # Letterhead (centred on the text column; the pas foto sits right)
+    centered(d, 340, 16, "WAKIL PRESIDEN", font(BOLD, 30), INK)
+    centered(d, 340, 52, "REPUBLIK INDONESIA", font(BOLD, 30), INK)
     d.line([(40, 96), (pw - 40, 96)], fill=INK, width=2)
     d.line([(40, 102), (pw - 40, 102)], fill=INK, width=1)
 
     # Title (joke carrier 1)
-    centered(d, pw // 2, 122, "SURAT PENGUNDURAN DIRI", font(BOLD, 44), INK)
-    centered(d, pw // 2, 178, "Nomor: 001/GTA-VI/2026", font(REG, 19), (70, 70, 70, 255))
+    centered(d, 330, 122, "SURAT PENGUNDURAN DIRI", font(BOLD, 36), INK)
+    centered(d, 340, 178, "Nomor: 001/GTA-VI/2026", font(REG, 19), (70, 70, 70, 255))
 
     # Addressee + name
     centered(d, pw // 2, 214, "GIBRAN RAKABUMING RAKA", font(BOLD, 29), INK)
@@ -117,6 +118,20 @@ def main():
     img.alpha_composite(shadow.filter(ImageFilter.GaussianBlur(8)))
     letter = draw_letter().rotate(-1.5, expand=False, resample=Image.BICUBIC)
     img.alpha_composite(letter, (200, 30))
+
+    # Gibran's picture: a flat cartoon portrait as the letter's pas foto,
+    # top right, framed in black like an official document photo.
+    photo = Image.open(PORTRAIT).convert("RGB")
+    pw2, ph2 = photo.size
+    crop_w = int(ph2 * 3 / 4)
+    left = (pw2 - crop_w) // 2
+    photo = photo.crop((left, 0, left + crop_w, ph2)).resize((130, 173), Image.LANCZOS)
+    framed = Image.new("RGBA", (138, 181), (255, 255, 255, 255))
+    framed.paste(photo, (4, 4))
+    fd = ImageDraw.Draw(framed)
+    fd.rectangle([0, 0, 137, 180], outline=(20, 20, 20, 255), width=3)
+    framed = framed.rotate(-1.5, expand=False, resample=Image.BICUBIC)
+    img.alpha_composite(framed, (838, 42))
 
     # The make.fun ghost as the letter's official seal, big, lower right.
     # Kept below the ALASAN line so it never covers the "GTA 6".

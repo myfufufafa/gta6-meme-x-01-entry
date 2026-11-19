@@ -47,9 +47,10 @@ is the format itself — the most formal document imaginable, used for
 the least formal reason.
 
 The make.fun ghost is the letter's official seal, big at the lower
-right, and a red MUNDUR stamp sits across the bottom. No face is
-shown anywhere: Gibran's identity comes from the letterhead, the
-name, and the signature. The letter was drawn crisp with Pillow in
+right, and a red MUNDUR stamp sits across the bottom. Gibran appears
+as a flat cartoon portrait — a pas foto at the top right of the
+letter, an illustration rather than a photograph — alongside the
+letterhead, the name, and the signature. The letter was drawn crisp with Pillow in
 `compose-gibran.py` over a photographed desk (controller, pen, lamp),
 so not a single word is garbled.
 
