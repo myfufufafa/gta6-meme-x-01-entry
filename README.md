@@ -36,23 +36,29 @@ real make.fun ghost from the press kit and the big caption were composited
 on top with `compose.py` (Python + Pillow), so the letters stay sharp and
 spelled right even when the picture is shrunk to the size the judge sees.
 
-## Meme kedua: Surat Pengunduran Diri
+## Meme kedua: Gibran Resigns (Breaking News)
 
 ![Meme kedua](meme-gibran.png)
 
-A formal resignation letter on a Vice President's desk: letterhead
-"WAKIL PRESIDEN REPUBLIK INDONESIA", addressed by GIBRAN RAKABUMING
-RAKA, resigning because he wants to focus on playing GTA 6. The joke
-is the format itself — the most formal document imaginable, used for
-the least formal reason.
+A breaking-news broadcast: Gibran, in batik, holds up his letter of
+resignation while Prabowo asks "For GTA 6 too, sir?" — and Gibran
+answers he must wait for GTA 6 to release first. Behind them a TV
+shows GTA VI "COMING SOON...", and the white make.fun ghost in a
+MakeFun cap gives a thumbs up next to a controller and a MakeFun mug.
+The banner reads "GIBRAN RESIGNS AS VICE PRESIDENT TO WAIT FOR GTA 6!"
 
-The make.fun ghost is the letter's official seal, big at the lower
-right, and a red MUNDUR stamp sits across the bottom. Gibran appears
-as a flat cartoon portrait — a pas foto at the top right of the
-letter, an illustration rather than a photograph — alongside the
-letterhead, the name, and the signature. The letter was drawn crisp with Pillow in
-`compose-gibran.py` over a photographed desk (controller, pen, lamp),
-so not a single word is garbled.
+The scene is Mas's own concept image, kept pixel-for-pixel — faces,
+ghost, TV, banner. Only the text was translated to English with
+`edit-gibran-concept.py` (Python + Pillow): the Indonesian speech
+bubbles, letter, headline, and ticker were covered with matching
+background colour and redrawn in English, so not a single word is
+garbled. The letter keeps its Garuda emblem and signature; the quote
+"Vice City is calling..." — Gibran, the "grand theft auto VI" /
+"COMING SOON..." TV screen, and "Powered by MakeFun" were already
+English and are untouched.
+
+This replaces the earlier generated-letter version of the second meme
+(see `compose-gibran.py`, kept for history).
 
 The post text for this meme is in `caption-gibran.txt`. `POST.json`
 still points at the first meme's post until this one is posted.
@@ -91,6 +97,7 @@ to `POST.json`.
 - `main.ts` — the entry program described above
 - `POST.json` — the X post address (placeholder until posted)
 - `caption.txt` — the exact text to post with the meme
-- `meme-gibran.png` — the second meme (resignation letter), 1200x675 PNG
-- `compose-gibran.py` — the Pillow script that built `meme-gibran.png`
+- `meme-gibran.png` — the second meme (breaking-news concept), 1536x1024 PNG
+- `edit-gibran-concept.py` — the Pillow script that translated the concept image to English
+- `compose-gibran.py` — the Pillow script that built the first version of `meme-gibran.png` (superseded, kept for history)
 - `caption-gibran.txt` — the exact text to post with the second meme
